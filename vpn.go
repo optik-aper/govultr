@@ -42,8 +42,9 @@ type VPN struct {
 
 // VPNBilling represents the billing information for a VPN.
 type VPNBilling struct {
-	Charges float32 `json:"charges"`
-	Monthly float32 `json:"monthly"`
+	Charges     float32 `json:"charges"`
+	Monthly     float32 `json:"monthly"`
+	DateInvoice string  `json:"next_invoice_date"`
 }
 
 type vpnsBody struct {
