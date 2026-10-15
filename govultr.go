@@ -82,6 +82,7 @@ type Client struct {
 	User                     UserService
 	VirtualFileSystemStorage VirtualFileSystemStorageService
 	VPC                      VPCService
+	VPN                      VPNService
 
 	// Optional function called after every successful request made to the Vultr API
 	onRequestCompleted RequestCompletionCallback
@@ -158,6 +159,7 @@ func NewClient(httpClient *http.Client) *Client {
 	client.User = &UserServiceHandler{client}
 	client.VirtualFileSystemStorage = &VirtualFileSystemStorageServiceHandler{client}
 	client.VPC = &VPCServiceHandler{client}
+	client.VPN = &VPNServiceHandler{client}
 
 	return client
 }
