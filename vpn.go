@@ -13,9 +13,9 @@ const vpnPath = "/v2/vpns"
 // VPNService is the interface to interact with the VPN endpoints on the Vultr API
 // TODO: link
 type VPNService interface {
-	Create(ctx context.Context, req *VPNCreateReq) (*VPN, *http.Response, error)
+	Create(ctx context.Context, vpnReq *VPNCreateReq) (*VPN, *http.Response, error)
 	Get(ctx context.Context, vpnID string) (*VPN, *http.Response, error)
-	Update(ctx context.Context, vpnID string, req *VPNUpdateReq) (*VPN, *http.Response, error)
+	Update(ctx context.Context, vpnID string, vpnReq *VPNUpdateReq) (*VPN, *http.Response, error)
 	Delete(ctx context.Context, vpnID string) error
 	List(ctx context.Context, options *ListOptions) ([]VPN, *Meta, *http.Response, error)
 }
@@ -86,7 +86,7 @@ func (h *VPNServiceHandler) Create(ctx context.Context, vpnReq *VPNCreateReq) (*
 	return v.VPN, resp, nil
 }
 
-// Get retrieves a VPN
+// Get retrieves a VPN.
 func (h *VPNServiceHandler) Get(ctx context.Context, vpnID string) (*VPN, *http.Response, error) {
 	path := fmt.Sprintf("%s/%s", vpnPath, vpnID)
 
@@ -104,7 +104,7 @@ func (h *VPNServiceHandler) Get(ctx context.Context, vpnID string) (*VPN, *http.
 	return v.VPN, resp, nil
 }
 
-// Update sends an update request for a VPN
+// Update sends an update request for a VPN.
 func (h *VPNServiceHandler) Update(ctx context.Context, vpnID string, vpnReq *VPNUpdateReq) (*VPN, *http.Response, error) {
 	path := fmt.Sprintf("%s/%s", vpnPath, vpnID)
 
@@ -122,7 +122,7 @@ func (h *VPNServiceHandler) Update(ctx context.Context, vpnID string, vpnReq *VP
 	return v.VPN, resp, nil
 }
 
-// Delete removes a VPN
+// Delete removes a VPN.
 func (h *VPNServiceHandler) Delete(ctx context.Context, vpnID string) error {
 	path := fmt.Sprintf("%s/%s", vpnPath, vpnID)
 
@@ -138,7 +138,7 @@ func (h *VPNServiceHandler) Delete(ctx context.Context, vpnID string) error {
 	return nil
 }
 
-// List retrieves all VPNs
+// List retrieves all VPNs.
 func (h *VPNServiceHandler) List(ctx context.Context, options *ListOptions) ([]VPN, *Meta, *http.Response, error) {
 	req, errReq := h.client.NewRequest(ctx, http.MethodGet, vpnPath, nil)
 	if errReq != nil {
