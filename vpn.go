@@ -104,7 +104,7 @@ type VPNEndpointConfig struct {
 	ServerPublicKey  string `json:"server_public_key"`
 }
 
-// VPNEndpointCreateReq represents the body of a VPN endpoint create request.
+// VPNEndpointReq represents the body of a VPN endpoint create request.
 type VPNEndpointReq struct {
 	Label         string                    `json:"label"`
 	IPAddress     string                    `json:"ip_address,omitempty"`
