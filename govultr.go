@@ -236,7 +236,7 @@ func (c *Client) DoWithContext(ctx context.Context, r *http.Request, data interf
 		}
 
 		if responseError.Message != "" {
-			return nil, fmt.Errorf("error returned from api : %v", responseError.Message)
+			return nil, fmt.Errorf("error returned from api : %q", responseError.Message)
 		}
 	}
 
