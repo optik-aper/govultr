@@ -115,7 +115,7 @@ type DatabasePlan struct {
 	VCPUCount        int              `json:"vcpu_count"`
 	RAM              int              `json:"ram"`
 	Disk             int              `json:"disk"`
-	MonthlyCost      int              `json:"monthly_cost"`
+	MonthlyCost      float32          `json:"monthly_cost"`
 	SupportedEngines SupportedEngines `json:"supported_engines"`
 	MaxConnections   *MaxConnections  `json:"max_connections,omitempty"`
 	Locations        []string         `json:"locations"`
@@ -151,6 +151,7 @@ type DBListOptions struct {
 // Database represents a Managed Database subscription
 type Database struct {
 	ID                     string               `json:"id"`
+	ParentID               string               `json:"parent_id,omitempty"`
 	DateCreated            string               `json:"date_created"`
 	Plan                   string               `json:"plan"`
 	PlanDisk               int                  `json:"plan_disk"`
@@ -158,6 +159,7 @@ type Database struct {
 	PlanVCPUs              int                  `json:"plan_vcpus"`
 	PlanReplicas           *int                 `json:"plan_replicas,omitempty"`
 	PlanBrokers            int                  `json:"plan_brokers,omitempty"`
+	PlanPrice              float32              `json:"plan_price"`
 	Region                 string               `json:"region"`
 	DatabaseEngine         string               `json:"database_engine"`
 	DatabaseEngineVersion  string               `json:"database_engine_version"`
